@@ -24,6 +24,21 @@
             }
         }
         
+        var totalEnemies = 8;
+        
+        if(difficulty == 'easy'){
+            totalEnemies = 8;
+            // enemySize?
+            // enemyMaxSpeed 
+            // enemyMinSpeed 
+        }
+        
+        if(difficulty == 'medium'){
+            totalEnemies = 24;
+            // enemySize?
+            // enemyMaxSpeed 
+            // enemyMinSpeed 
+        }
         
         const PLAYER_SIZE = 10;
         var playerXpos = 250;
@@ -48,13 +63,15 @@
         const DOWN_KEY = 40;
         
         var score = 0;
-        var totalEnemies = 8;
         var enemies = [];
         
         var startingPos = true;
         
+        var gameRun = true;
         
         function mainloop() {
+            if(gameRun){
+               
             colorRect(0,0,canvas.width,canvas.height,'black'); // bg
             
             colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'red');  //player
@@ -71,6 +88,9 @@
             enemyMove(); 
             
             drawEnemy();
+            }else {
+               colorRect(0,0,canvas.width,canvas.height,'red'); // bg 
+            }
         }
             
         
@@ -91,7 +111,7 @@
             if(enemy.enemyYpos + enemy.ENEMY_SIZE > playerYpos && enemy.enemyYpos < playerYpos + PLAYER_SIZE && enemy.enemyXpos + enemy.ENEMY_SIZE > playerXpos && enemy.enemyXpos < playerXpos + PLAYER_SIZE){
                  playerXpos = canvas.width/2 - PLAYER_SIZE / 2;
                 playerYpos = canvas.height - PLAYER_SIZE;
-                
+                gameRun = false;
                }
           });    
         }
@@ -173,14 +193,12 @@
            // var enemyXpos = math.floor(math.random()*(canvas.width - ENEMY_SIZE));
             var enemyXpos = enemyPos * (canvas.width / 3);
             var enemyYpos = 0 - ENEMY_SIZE;
-            var enemyXspeed = Math.floor(Math.random()*(4 - 2) + 2);
             var enemyYspeed = Math.floor(Math.random()*(12 - 4) + 4);
             
             var enemy = {
                 enemyXpos: enemyXpos,
                 enemyYpos: enemyYpos,
                 ENEMY_SIZE: ENEMY_SIZE,
-                enemyXspeed: enemyXspeed,
                 enemyYspeed: enemyYspeed
             }
             
