@@ -48,7 +48,7 @@
             colorRect(0,0,canvas.width,canvas.height,'black'); // bg
             
             colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'red');  //player
-            
+            colorText('score:'+score,20,20,'25px Arial','white');
             
             
             if(startingPos){
@@ -187,6 +187,12 @@
          function colorRect(x,y,w,h,c){
             canvasContext.fillStyle = c;
             canvasContext.fillRect(x,y,w,h);
+        }
+        
+        function colorText(msg,x,y,f,c){
+            canvasContext.fillStyle = c;
+            canvasContext.font = f;
+            canvasContext.fillText(msg,x,y);
         }
         
 
