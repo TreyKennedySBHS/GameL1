@@ -53,13 +53,13 @@
             
             if(startingPos){
                 for(i=0; i < totalEnemies; i++){
-                    
+                  makeEnemy();  
                 }
                     startingPos = false;
             }
             playerMove();
             enemyMove(); 
-            makeEnemy();
+            
             drawEnemy();
         }
             
@@ -74,14 +74,14 @@
                 enemy.enemyYpos = 0 - ENEMY_SIZE;
                 enemy.enemyXpos = Math.floor(Math.random()*(canvas.width - ENEMY_SIZE));
                 enemy.enemyYspeed = Math.floor(Math.random()*(12 - 4) + 4);
+                score++;
                 
             }
             
             if(enemy.enemyYpos + enemy.ENEMY_SIZE > playerYpos && enemy.enemyYpos < playerYpos + PLAYER_SIZE && enemy.enemyXpos + enemy.ENEMY_SIZE > playerXpos && enemyXpos < playerXpos + PLAYER_SIZE){
-                 playerXpos = 0;
+                 playerXpos = canvas.width/2 - PLAYER_SIZE / 2;
                 playerYpos = canvas.height - PLAYER_SIZE;
-                score++;
-                console.log('score' + score);
+                
                }
           });    
         }
