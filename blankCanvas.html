@@ -14,6 +14,16 @@
             setInterval(mainloop, 1000 / 50);
         }
        
+        var difficulty = '';
+        var pass = false;
+        
+        while(pass == false){
+            difficulty = prompt('choose your difficulty, easy medium or hard','easy') 
+            if(difficulty != '' || difficulty != null){
+                pass = true;
+            }
+        }
+        
         
         const PLAYER_SIZE = 10;
         var playerXpos = 250;
